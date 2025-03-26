@@ -66,7 +66,7 @@ contract TradingCardGame is ERC1155, Ownable {
     }
 
     /// @notice Mint a batch of cards
-    function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts) public onlyOwner {
+    function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts) internal {
         _mintBatch(to, ids, amounts, "");
         for (uint256 i = 0; i < ids.length; i++) {
             userCardBalances[to][ids[i]] += amounts[i];
