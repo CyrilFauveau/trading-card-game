@@ -27,6 +27,9 @@ jobs:
 
       - name: Compile smart contract
         run: npx hardhat compile
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
 
       - name: Run tests
         run: npx hardhat test
