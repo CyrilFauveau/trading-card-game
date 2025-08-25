@@ -13,6 +13,7 @@ contract TradingCardGame is ERC1155, Ownable {
     uint32 public BOOSTER_OPENING_DELAY = 12 hours;
     uint16 public COLLECTION_CARDS_NUMBER = 207;
     uint16 public BOOSTER_CARDS_NUMBER = 5;
+    uint256 public minimumEthBalance = 0.001 ether; // Add minimum balance requirement
 
     mapping(address => mapping(uint256 => uint256)) public userCardBalances;
     mapping(address => uint256) public lastBoosterTimestamp;
@@ -34,6 +35,11 @@ contract TradingCardGame is ERC1155, Ownable {
     /// @dev should be an automic number at the end
     function setBoosterCardsNumber(uint16 _number) public onlyOwner {
         BOOSTER_CARDS_NUMBER = _number;
+    }
+
+    /// @notice Set minimum ETH balance requirement (owner only)
+    function setMinimumEthBalance(uint256 _balance) public onlyOwner {
+        minimumEthBalance = _balance;
     }
 
     /// ==================== GETTERS ==================== ///
@@ -75,6 +81,7 @@ contract TradingCardGame is ERC1155, Ownable {
 
     /// @notice Open a booster and get random cards
     function openBooster() public {
+        require(msg.sender.balance >= minimumEthBalance, "Insufficient ETH balance");
         require(block.timestamp >= lastBoosterTimestamp[msg.sender] + BOOSTER_OPENING_DELAY, "Wait before opening another booster");
 
         uint256[] memory ids = new uint256[](BOOSTER_CARDS_NUMBER);
