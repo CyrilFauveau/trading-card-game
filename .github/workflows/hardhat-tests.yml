@@ -33,3 +33,6 @@ jobs:
 
       - name: Run tests
         run: npx hardhat test
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
