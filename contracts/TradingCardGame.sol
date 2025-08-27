@@ -38,7 +38,7 @@ contract TradingCardGame is ERC1155, Ownable {
     }
 
     /// @notice Set minimum ETH balance requirement (owner only)
-    function setMinimumEthBalance(uint256 _balance) public onlyOwner {
+    function setMinimumEthBalance(uint128 _balance) public onlyOwner {
         MINIMUM_ETH_BALANCE = _balance;
     }
 
@@ -48,7 +48,7 @@ contract TradingCardGame is ERC1155, Ownable {
         uint256[] memory amounts = new uint256[](COLLECTION_CARDS_NUMBER);
         uint256 count = 0;
 
-        for (uint16 i = 1; i <= COLLECTION_CARDS_NUMBER; i++) {
+        for (uint256 i = 1; i <= COLLECTION_CARDS_NUMBER; i++) {
             if (userCardBalances[user][i] > 0) {
                 ids[count] = i;
                 amounts[count] = userCardBalances[user][i];

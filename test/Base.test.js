@@ -58,7 +58,7 @@ describe("Booster opening", function () {
         it("Should change the value of minimumEthBalance", async function () {
             await tradingCardGame.connect(owner).setMinimumEthBalance(ethers.parseEther("0.005"));
             
-            const minimumEthBalance = await tradingCardGame.minimumEthBalance();
+            const minimumEthBalance = await tradingCardGame.MINIMUM_ETH_BALANCE();
 
             expect(minimumEthBalance).to.equal(ethers.parseEther("0.005"));
         });
@@ -161,7 +161,7 @@ describe("Booster opening", function () {
 
     describe("Initial state", function () {
         it("Should have correct default minimum ETH balance", async function () {
-            const minimumEthBalance = await tradingCardGame.minimumEthBalance();
+            const minimumEthBalance = await tradingCardGame.MINIMUM_ETH_BALANCE();
             expect(minimumEthBalance).to.equal(ethers.parseEther("0.001"));
         });
 
