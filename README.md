@@ -1,7 +1,7 @@
 # Trading Card Game
 
 A collectible card game smart contract based on the [ERC-1155](https://eips.ethereum.org/EIPS/eip-1155) standard, developed with Solidity.\
-Each card is represented by an NFT with metadata stored on IPFS.
+Each card is represented by a SFT with metadata stored on IPFS.
 
 Contract address: https://sepolia.etherscan.io/address/0xFE0D18f975eb983f906afB2C6cDB5031e0A6bc5a
 
@@ -14,6 +14,13 @@ IPFS address: https://gateway.pinata.cloud/ipfs/bafybeibn6dopwmu5ususvo5edre4c7v
 - 🎁 **Opening boosters** of random cards
 - ⌛ **12-hour wait** between each booster opening
 - 🧾 **Collection tracking** of users cards
+
+---
+
+## 📆 Coming features
+
+- 🤝 **Exchanging** cards with other users
+- 💎 **Rarity** of cards
 
 ---
 
